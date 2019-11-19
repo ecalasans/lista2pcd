@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/ericcalasans/Documents/Estudos/C++/Ponteiros/ponteiros.cpp
+iostream
+-
+stdlib.h
+-
+unistd.h
+-
+vector
+-
+
