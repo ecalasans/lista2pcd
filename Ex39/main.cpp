@@ -1,5 +1,5 @@
 #include <iostream>
-#include "/Users/ericcalasans/mpi/openmpi-4.0.2/ompi/include/mpi.h"
+#include <mpi.h>
 #include <math.h>
 #include <vector>
 #include <string>
@@ -14,8 +14,8 @@ int main() {
     string x, y;
     double escalar;
     vector<double> vx, vy, z;
-    int comm_sz, myrank, send_count;
-    int rec_buffer_v1, rec_buffer_v2;
+    int comm_sz, myrank, send_count = 0;
+    vector<double> rec_buffer_v1, rec_buffer_v2;
 
     MPI_Init(NULL, NULL);
     MPI_Comm_size(MPI_COMM_WORLD, &comm_sz);
@@ -42,11 +42,13 @@ int main() {
         //Espalha os dados para os processos
         MPI_Scatter(&vx, send_count, MPI_DOUBLE, &rec_buffer_v1, send_count, MPI_DOUBLE, 0, MPI_COMM_WORLD);
         MPI_Scatter(&vy, send_count, MPI_DOUBLE, &rec_buffer_v2, send_count, MPI_DOUBLE, 0, MPI_COMM_WORLD);
-        MPI_Bcast(&escalar, 1, MPI_DOUBLE, myrank, MPI_COMM_WORLD);
+        MPI_Bcast(&escalar, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    } else {
+        MPI_Scatter(&vx, send_count, MPI_DOUBLE, &rec_buffer_v1, send_count, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+        MPI_Scatter(&vy, send_count, MPI_DOUBLE, &rec_buffer_v2, send_count, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+        MPI_Bcast(&escalar, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
-        for(int i = 1; i < comm_sz; ++i){
-            cout << "Distribuindo " << rec_buffer_v1 << endl;
-        }
+        cout << myrank << endl;
     }
 
 
