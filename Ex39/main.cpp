@@ -7,26 +7,23 @@
 
 using namespace std;
 
-void DotProduct(double* local_x, double* local_y, double* local_z, int local_n);
-vector<double> LeVetor(string s);
-void ImprimeResultados();
-void EspalhaDados(vector<double> v1, vector<double> v2,
-        double e, MPI_Comm comm, int qt_proc);
-
 const int MAX_STRING = 100;
+vector<double> LeVetor(string s);
 
 int main() {
     string x, y;
     double escalar;
     vector<double> vx, vy, z;
-    int comm_sz, myrank;
+    int comm_sz, myrank, send_count;
+    int rec_buffer_v1, rec_buffer_v2;
 
     MPI_Init(NULL, NULL);
     MPI_Comm_size(MPI_COMM_WORLD, &comm_sz);
     MPI_Comm_rank(MPI_COMM_WORLD, &myrank);
 
-    //Ler os vetores e escalar
+    //Para o processo 0
     if(myrank == 0){
+        //Lê os dados e transforma em vetor
         cout << "Exercicio 3.9" << endl;
         cout << "Digite o primeiro vetor com elementos separados por espaco: ";
         getline(cin, x);
@@ -39,7 +36,17 @@ int main() {
         cout << "Digite o escalar: ";
         cin >> escalar;
 
-        EspalhaDados(vx, vy, escalar, MPI_COMM_WORLD, comm_sz);
+        //Calcula a quantidade da particao dos vetores
+        send_count = vx.size()/comm_sz;
+
+        //Espalha os dados para os processos
+        MPI_Scatter(&vx, send_count, MPI_DOUBLE, &rec_buffer_v1, send_count, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+        MPI_Scatter(&vy, send_count, MPI_DOUBLE, &rec_buffer_v2, send_count, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+        MPI_Bcast(&escalar, 1, MPI_DOUBLE, myrank, MPI_COMM_WORLD);
+
+        for(int i = 1; i < comm_sz; ++i){
+            cout << "Distribuindo " << rec_buffer_v1 << endl;
+        }
     }
 
 
@@ -64,13 +71,4 @@ vector<double> LeVetor(string s){
         v.push_back(numero);
     }
     return v;
-}
-
-void EspalhaDados(vector<double> v1, vector<double> v2, double e, MPI_Comm comm, int qt_proc){
-    int send_count = v1.size()/qt_proc;
-    double* rec_buffer = (double* ) malloc(sizeof(double) * send_count);
-
-    MPI_Scatter(&v1, send_count, MPI_DOUBLE, rec_buffer, send_count, MPI_DOUBLE, 0, comm);
-    MPI_Scatter(&v2, send_count, MPI_DOUBLE, rec_buffer, send_count, MPI_DOUBLE, 0, comm);
-    MPI_Bcast(&e, 1, MPI_DOUBLE, 0, comm);
 }
