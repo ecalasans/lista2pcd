@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+mpic++ -g -Wall -o saida main.cpp
+
+mpiexec -n 4 ./saida
