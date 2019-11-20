@@ -11,12 +11,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b12c8d9-e399-4a83-932d-0893015ea309" name="Default Changelist" comment="Testando mpiscatter">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saida" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/saida.dSYM/Contents/Resources/DWARF/saida" beforeDir="false" afterPath="$PROJECT_DIR$/saida.dSYM/Contents/Resources/DWARF/saida" afterDir="false" />
+    <list default="true" id="4b12c8d9-e399-4a83-932d-0893015ea309" name="Default Changelist" comment="Add gitignore">
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -81,7 +77,7 @@
       <workItem from="1574186749210" duration="385000" />
       <workItem from="1574205674264" duration="2131000" />
       <workItem from="1574251539225" duration="238000" />
-      <workItem from="1574255857044" duration="4949000" />
+      <workItem from="1574255857044" duration="5277000" />
     </task>
     <task id="LOCAL-00001" summary="Testando mpiscatter">
       <created>1574160626943</created>
@@ -111,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574260822059</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add gitignore">
+      <created>1574260948653</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1574260948653</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,6 +137,7 @@
     <MESSAGE value="Testando mpiscatter" />
     <MESSAGE value="Testando mpiscatter ainda" />
     <MESSAGE value="Mudando para bash" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mudando para bash" />
+    <MESSAGE value="Add gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add gitignore" />
   </component>
 </project>

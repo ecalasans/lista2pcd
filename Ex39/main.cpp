@@ -4,6 +4,7 @@
 #include <cstdlib>
 #include <string>
 #include <sstream>
+#include <ctime>
 
 using namespace std;
 
@@ -50,6 +51,7 @@ int main() {
 }
 
 void GeraVetor(int dim, double* v){
+    srand(time(NULL));
     v = (double*) malloc(dim * sizeof(double));
     for(int i=0; i < dim; ++i){
         v[i] = rand()*10.0;
