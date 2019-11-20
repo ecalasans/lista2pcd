@@ -38,7 +38,12 @@ int main() {
         dim = &temp;
 
         GeraVetor(*dim, vx);
-        free(vx);
+
+        cout << "Imprimindo vx de novo:" << endl;
+        for(int i=0; i < *dim; ++i){
+            cout << vx[i] << endl;
+        }
+
     } else {
         cout << myrank << "Printando algo" << endl;
     }
