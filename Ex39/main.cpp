@@ -25,6 +25,8 @@ int main() {
 
     int* dim;
 
+    char* pont = NULL;
+    char* rec = NULL;
 
     MPI_Init(NULL, NULL);
     MPI_Comm_size(MPI_COMM_WORLD, &comm_sz);
@@ -37,15 +39,18 @@ int main() {
         cin >> temp;
         dim = &temp;
 
-        GeraVetor(*dim, vx);
+        //GeraVetor(*dim, vx);
+        char mens[3] = {'a', 'b', 'c'};
 
-        cout << "Imprimindo vx de novo:" << endl;
-        for(int i=0; i < *dim; ++i){
-            cout << vx[i] << endl;
-        }
+        pont = mens;
 
+        MPI_Bcast(pont, 2, MPI_CHAR, 0, MPI_COMM_WORLD);
     } else {
-        cout << myrank << "Printando algo" << endl;
+        rec = (char* )malloc(sizeof(char));
+        MPI_Bcast(rec, 2, MPI_CHAR, 0, MPI_COMM_WORLD);
+        for(int i=0; i < 2; ++i)
+            cout << *(rec++) << endl;
+
     }
 
     //Efetuar os calculos nos processo
@@ -62,5 +67,4 @@ void GeraVetor(int dim, double* v){
         v[i] = rand()*10.0;
         cout << v[i] << endl;
     }
-
 }
