@@ -8,25 +8,21 @@
 
 using namespace std;
 
-void GeraVetor(int dim, double* v);
+const int MAX_DIM = 1024;
+
+double * GeraVetor(int fator);
 void EspalhaVetores();
 
 int main() {
-    string x, y;
-    double escalar;
+    double  escalar = 0.0;
 
-    double* vx = nullptr;
-    double* vy = nullptr;
-    double* z = nullptr;
-    double* b1 = nullptr;
-    double* b2 = nullptr;
+    double* vx = NULL;
+    double* vy = NULL;
+    double* z = NULL;
+    double* b1 = NULL;
+    double* b2 = NULL;
 
-    int comm_sz, myrank, send_count = 0;
-
-    int* dim;
-
-    char* pont = NULL;
-    char* rec = NULL;
+    int comm_sz, myrank;
 
     MPI_Init(NULL, NULL);
     MPI_Comm_size(MPI_COMM_WORLD, &comm_sz);
@@ -34,23 +30,32 @@ int main() {
 
     //Espalhar os valores para todos os processos - usar a funcao MPI_Scatter
     if (myrank == 0){
-        int temp = 0;
-        cout << "Digite a dimensão do vetor:  ";
-        cin >> temp;
-        dim = &temp;
+        vx = GeraVetor(comm_sz);
+        vy = GeraVetor(comm_sz);
+        escalar = 2.0;
 
-        //GeraVetor(*dim, vx);
-        char mens[3] = {'a', 'b', 'c'};
+        b1 = (double *) malloc(MAX_DIM * sizeof(double));
+        b2 = (double *) malloc(MAX_DIM * sizeof(double));
 
-        pont = mens;
+        MPI_Scatter(vx, MAX_DIM, MPI_DOUBLE, b1, MAX_DIM, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+        MPI_Scatter(vy, MAX_DIM, MPI_DOUBLE, b2, MAX_DIM, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+        MPI_Bcast(&escalar, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
-        MPI_Bcast(pont, 2, MPI_CHAR, 0, MPI_COMM_WORLD);
     } else {
-        rec = (char* )malloc(sizeof(char));
-        MPI_Bcast(rec, 2, MPI_CHAR, 0, MPI_COMM_WORLD);
-        for(int i=0; i < 2; ++i)
-            cout << *(rec++) << endl;
+        b1 = (double *) malloc(MAX_DIM * sizeof(double));
+        b2 = (double *) malloc(MAX_DIM * sizeof(double));
+        double * rec_escalar = (double *) malloc(sizeof(double));
 
+        MPI_Scatter(vx, MAX_DIM, MPI_DOUBLE, b1, MAX_DIM, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+        MPI_Scatter(vy, MAX_DIM, MPI_DOUBLE, b2, MAX_DIM, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+        MPI_Bcast(rec_escalar, 1, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+
+        for(int i=0; i < 3; ++i)
+            cout << "Printado de " << myrank << " - " << *(b1+i) << endl;
+
+        for(int j=0; j < 2; ++j)
+            cout << "Printado de " << myrank << " - " << *(b2+j) << endl;
+        cout << "Escalar = " << *(rec_escalar) << endl;
     }
 
     //Efetuar os calculos nos processo
@@ -60,11 +65,11 @@ int main() {
     return 0;
 }
 
-void GeraVetor(int dim, double* v){
-    srand(time(NULL));
-    v = (double*) malloc(dim * sizeof(double));
-    for(int i=0; i < dim; ++i){
-        v[i] = rand()*10.0;
-        cout << v[i] << endl;
+double * GeraVetor(int fator){
+    int tam = fator * MAX_DIM;
+    double * v = new double[tam];
+    for(int i=0; i < tam; ++i){
+        v[i] = (double) i*1.65;
     }
+    return v;
 }

@@ -11,7 +11,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b12c8d9-e399-4a83-932d-0893015ea309" name="Default Changelist" comment="Add gitignore">
+    <list default="true" id="4b12c8d9-e399-4a83-932d-0893015ea309" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -77,7 +78,12 @@
       <workItem from="1574186749210" duration="385000" />
       <workItem from="1574205674264" duration="2131000" />
       <workItem from="1574251539225" duration="238000" />
-      <workItem from="1574255857044" duration="5277000" />
+      <workItem from="1574255857044" duration="7291000" />
+      <workItem from="1574269923034" duration="2224000" />
+      <workItem from="1574274654425" duration="284000" />
+      <workItem from="1574342258731" duration="835000" />
+      <workItem from="1574420355713" duration="4202000" />
+      <workItem from="1574550994213" duration="3451000" />
     </task>
     <task id="LOCAL-00001" summary="Testando mpiscatter">
       <created>1574160626943</created>
@@ -114,7 +120,28 @@
       <option name="project" value="LOCAL" />
       <updated>1574260948653</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Colocando seed no random">
+      <created>1574261300443</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1574261300443</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Mais testes">
+      <created>1574261433725</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1574261433725</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Cosnegui fazer o broadcast">
+      <created>1574272282043</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1574272282044</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,6 +165,9 @@
     <MESSAGE value="Testando mpiscatter ainda" />
     <MESSAGE value="Mudando para bash" />
     <MESSAGE value="Add gitignore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add gitignore" />
+    <MESSAGE value="Colocando seed no random" />
+    <MESSAGE value="Mais testes" />
+    <MESSAGE value="Cosnegui fazer o broadcast" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cosnegui fazer o broadcast" />
   </component>
 </project>
