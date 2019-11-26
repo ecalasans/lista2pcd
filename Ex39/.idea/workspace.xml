@@ -13,6 +13,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4b12c8d9-e399-4a83-932d-0893015ea309" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Ex39.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Ex39.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -83,7 +84,10 @@
       <workItem from="1574274654425" duration="284000" />
       <workItem from="1574342258731" duration="835000" />
       <workItem from="1574420355713" duration="4202000" />
-      <workItem from="1574550994213" duration="3451000" />
+      <workItem from="1574550994213" duration="6056000" />
+      <workItem from="1574605227585" duration="1443000" />
+      <workItem from="1574667612496" duration="2612000" />
+      <workItem from="1574678894232" duration="32000" />
     </task>
     <task id="LOCAL-00001" summary="Testando mpiscatter">
       <created>1574160626943</created>
@@ -141,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1574272282044</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Scatter e Bcast funcionando">
+      <created>1574554737265</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1574554737265</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +179,7 @@
     <MESSAGE value="Colocando seed no random" />
     <MESSAGE value="Mais testes" />
     <MESSAGE value="Cosnegui fazer o broadcast" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cosnegui fazer o broadcast" />
+    <MESSAGE value="Scatter e Bcast funcionando" />
+    <option name="LAST_COMMIT_MESSAGE" value="Scatter e Bcast funcionando" />
   </component>
 </project>
