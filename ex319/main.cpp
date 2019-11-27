@@ -29,7 +29,7 @@ int main() {
     MPI_Type_commit(&triang);
 
      if(my_rank == 0){
-         cout << "Gerando a matriz quadrada de tamanho " << DIMENSAO << "..." << endl;
+         cout << "Processo " << my_rank << " gerando a matriz quadrada de tamanho " << DIMENSAO << "..." << endl;
          for(int i = 0; i < DIMENSAO * DIMENSAO; i++){
              if(i % DIMENSAO != 0) {
                  cout << matriz[i] << " ";
@@ -43,7 +43,16 @@ int main() {
          rec_buf = new int[DIMENSAO * DIMENSAO];
         MPI_Recv(rec_buf, 1, triang, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
 
-        cout << rec_buf[3] << endl;
+        cout << endl << "Processo " << my_rank << " imprimindo a matriz triangular superior..." << endl;
+
+        for(int i = 0; i < DIMENSAO * DIMENSAO; i++) {
+            if (i % DIMENSAO != 0) {
+                cout << rec_buf[i] << " ";
+            } else {
+                cout << endl << rec_buf[i] << " ";
+            }
+        }
+        cout << endl;
      }
 
      MPI_Finalize();
